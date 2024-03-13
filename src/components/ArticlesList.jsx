@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
+import { Link } from "react-router-dom"
 
 const ArticlesList = () => {
 const [articles, setArticle] = useState([])
@@ -26,8 +27,7 @@ return(
                <img src={article.article_img_url} alt="" style={{width: "80px", height: "auto"}}/> <br />
                 Title: {article.title} <br /> 
                 Author: {article.author} <br />
-
-
+                <Link to={`/articles/${article.article_id}`} ><button>See more</button></Link>
             </li>
         })}
     </ul>
