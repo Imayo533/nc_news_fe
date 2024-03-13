@@ -7,3 +7,15 @@ export const fetchArticles = (() => {
         return articles.data
     })
 })
+
+export const fetchSingleArticle = ((article_id)=>{
+    return ncNews.get(`articles/${article_id}`).then((article)=>{
+        return article.data
+    })
+})
+
+export const fetchCommentById = ((article_id)=>{
+    return ncNews.get(`articles/${article_id}/comments`).then((comment)=>{
+        return comment.data
+    })
+})
