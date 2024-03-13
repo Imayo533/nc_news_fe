@@ -19,3 +19,11 @@ export const fetchCommentById = ((article_id)=>{
         return comment.data
     })
 })
+
+export const patchVoteArticleId = ((article_id)=>{
+    const patchVote = { inc_votes:  1}
+ 
+    return ncNews.patch(`articles/${article_id}`, patchVote).then((vote)=>{
+        return vote.data 
+    })
+})

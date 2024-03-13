@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { fetchSingleArticle } from "../api";
+import { fetchSingleArticle, patchVoteArticleId } from "../api";
 import { Link } from "react-router-dom"
 
 const SingleArticle = () => {
@@ -20,6 +20,16 @@ const SingleArticle = () => {
         return <p>Loading....</p>
     }
 
+    const vote = (article_id) => {
+        setDisplayArticle((currentArticle)=>{
+            return {...currentArticle, votes: currentArticle.votes + 1}
+        })        
+        patchVoteArticleId(article_id).catch(()=>{
+            alert("Error: something went wrong!")
+        })
+    }
+
+
     return(
         <>
         <p>{displayArticle.title}</p>
@@ -27,6 +37,7 @@ const SingleArticle = () => {
         <p >Topic: {displayArticle.topic}</p>
         <img src={displayArticle.article_img_url} alt="" style={{width: "200px", height: "auto"}} />
         <p>{displayArticle.body}</p>
+        <button onClick={()=> vote(displayArticle.article_id)}>Vote</button>
         <p>Votes: {displayArticle.votes}</p>
         <p>Created: {displayArticle.created_at}</p>
         <Link to={`/articles/${displayArticle.article_id}/comments`} ><button>Comments</button></Link>
