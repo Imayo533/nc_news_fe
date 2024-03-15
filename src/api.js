@@ -27,3 +27,17 @@ export const patchVoteArticleId = ((article_id)=>{
         return vote.data 
     })
 })
+
+export const postComment = ((article_id, postBody)=>{   
+    return ncNews.post(`articles/${article_id}/comments`, postBody).then((comment)=>{
+        return comment.data
+    })
+})
+export const fetchAllUsers=(()=>{
+    return ncNews.get(`users`).then((response) => {
+        return response.data
+    })
+})
+export const deleteComment = (commentId) => {
+    return ncNews.delete(`comments/${commentId}`);
+};
