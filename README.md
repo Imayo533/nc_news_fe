@@ -35,10 +35,10 @@ To log in, select the login button in the top right corner.
 
 | Description               |                     Link                      |
 | :------------------------ | :-------------------------------------------: |
-| Hosted version of project |    https://oliverholt-ncnews.netlify.app/     |
-| Back-end API              |  https://long-pink-goat-wear.cyclic.app/api/  |
-| Back-end repo             | https://github.com/OliverHolt/BE-news-project |
-| Creator's Github profile  |        https://github.com/OliverHolt/         |
+| Hosted version of project |    https://ivanmayorga.netlify.app   |
+| Back-end API              |  https://nc-news-vguq.onrender.com/api |
+| Back-end repo             | https://github.com/Imayo533/nc-news |
+| Creator's Github profile  |        https://github.com/Imayo533        |
 
 # Set-up instructions
 
@@ -61,7 +61,7 @@ node --version
 In order to clone this repo use the following:
 
 ```
-git clone https://github.com/OliverHolt/NC-News
+git clone https://github.com/Imayo533/nc_news_fe.git
 ```
 
 If you would like to make changes to this repo yourself, fork the repo then clone it.
