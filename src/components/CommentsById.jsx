@@ -5,14 +5,13 @@ import CommentAdder from "./CommentAdder";
 import DeleteComment from "./DeleteComment";
 import UserContext from "./context/User";
 import { useContext } from "react";
-
+import "../css/App.css";
 
 const CommentsById = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [displayComments, setDisplayComments] = useState([]);
   const { article_id } = useParams();
-  const {loggedInUser} = useContext(UserContext)
- 
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchCommentById(article_id).then((data) => {
@@ -27,24 +26,31 @@ const CommentsById = () => {
 
   return (
     <>
-    <h1>Comments</h1>
-      <CommentAdder setDisplayComments={setDisplayComments}/>
-      <ul id="comments">
-        {displayComments.map((comment) => {
-          return (
-            <li key={comment.comment_id}>
-              <p>Author: {comment.author} </p>
-              <p>Created: {comment.created_at}</p>
-              <p>Comment: {comment.body}</p>
-              <p>Votes: {comment.votes}</p>
-              {comment.author === loggedInUser.username ? (
-                <DeleteComment id={comment.comment_id} setList={setDisplayComments}/>
-              ) : null}
-              
-            </li>
-          );
-        })}
-      </ul>
+      <section id="reviews-355">
+        <div id="reviews-355" class="cs-container">
+          <h1 class="cs-toppercomments">Comments</h1>
+          <CommentAdder setDisplayComments={setDisplayComments} />
+          <ul class="cs-card-group">
+            {displayComments.map((comment) => {
+              return (
+                <li id="reviews-355" class="cs-item" key={comment.comment_id}>
+                  <p class="cs-review">Comment: {comment.body}</p>
+                  <span class="cs-name">Author: {comment.author}</span>
+                  <span class="cs-job">Created: {comment.created_at}</span>
+                  <span class="cs-job">Votes: {comment.votes}</span>
+
+                  {comment.author === loggedInUser.username ? (
+                    <DeleteComment
+                      id={comment.comment_id}
+                      setList={setDisplayComments}
+                    />
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
     </>
   );
 };

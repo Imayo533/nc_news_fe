@@ -1,8 +1,83 @@
-# React + Vite
+# Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Summary
 
-Currently, two official plugins are available:
+This project was part of the Northcoders bootcamp, January 2024 - April 2024.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In this project, I:
+
+```
+1. Built a back-end API, in order to access application data.
+2. Built a front-end, which utilised the back-end API.
+```
+
+The intention was to mimic the building of a real world backend service. The database used was PSQL, and interactions were done through node-postgres. The front end application was constructed using React.
+
+## Using the app
+
+The front end application satisfies the following user desires:
+
+```
+1. View a list of all articles
+2. View a list of all articles of a certain topic
+3. View an individual article
+4. Vote on an article
+5. View a list of comments associated with an article
+6. Post a new comment to an existing article (only when a user is logged in)
+7. Delete comments (as a valid user)
+8. Have responsive error handling for invalid URL paths
+```
+You will not be able to comment on an article without being logged in. You cannot delete comments unless the user logged in was the one who posted it.
+
+To log in, select the login button in the top right corner.
+
+## Links
+
+| Description               |                     Link                      |
+| :------------------------ | :-------------------------------------------: |
+| Hosted version of project |    https://oliverholt-ncnews.netlify.app/     |
+| Back-end API              |  https://long-pink-goat-wear.cyclic.app/api/  |
+| Back-end repo             | https://github.com/OliverHolt/BE-news-project |
+| Creator's Github profile  |        https://github.com/OliverHolt/         |
+
+# Set-up instructions
+
+## Install Node.js
+
+Ensure that you have Node.js installed with these minimum requirements:
+
+```
+Node.js: v18.7.0
+```
+
+To check which version you currently have installed:
+
+```
+node --version
+```
+
+## Cloning the repo
+
+In order to clone this repo use the following:
+
+```
+git clone https://github.com/OliverHolt/NC-News
+```
+
+If you would like to make changes to this repo yourself, fork the repo then clone it.
+
+## Installing dependencies
+
+To install all dependencies required run:
+
+```
+npm install
+```
+
+## Running dev site locally
+
+Once you have installed all dependencies run:
+
+```
+npm start
+```

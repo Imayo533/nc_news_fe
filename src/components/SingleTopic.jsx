@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { fetchArticles } from "../api";
+import { getArticlesByTopic } from "../api";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
+import "../css/App.css";
 
-const ArticlesList = () => {
-  const [articles, setArticle] = useState([]);
+const singleTopic = () => {
+  const { topic } = useParams();
+  const [articles, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchArticles().then((data) => {
-      setArticle(data);
-      setIsLoading(false);
-    });
-  }, []);
+    getArticlesByTopic(topic)
+      .then((articles) => {
+        setArticle(articles);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        console.log(err.message, "<<< error message 1");
+      });
+  }, [topic]);
 
   if (isLoading) {
     return <Loading />;
@@ -52,6 +60,10 @@ const ArticlesList = () => {
                   {article.created_at}
                 </span>
                 <h3 class="cs-h3">{article.title}</h3>
+                <p class="cs-text-article-singletopic">
+                  Topic: {article.topic}
+                </p>{" "}
+                <br />
                 <Link class="cs-link" to={`/articles/${article.article_id}`}>
                   Read More
                 </Link>
@@ -64,4 +76,4 @@ const ArticlesList = () => {
   );
 };
 
-export default ArticlesList;
+export default singleTopic;
